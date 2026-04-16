@@ -3,7 +3,7 @@ import { DM_Sans, Fraunces, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Shell } from "@/components/nav/shell";
 import { ThemeProvider } from "@/components/theme-provider";
-import { getSiteUrl } from "@/lib/env";
+import { getSiteUrl, SITE_DISPLAY_NAME } from "@/lib/env";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -27,8 +27,8 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Editorial — Personal blog",
-    template: "%s — Editorial",
+    default: SITE_DISPLAY_NAME,
+    template: `${SITE_DISPLAY_NAME} | %s`,
   },
   description:
     "Essays and notes on software, design, and everything in between.",
@@ -36,10 +36,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Editorial",
+    siteName: SITE_DISPLAY_NAME,
   },
   twitter: {
     card: "summary_large_image",
+  },
+  icons: {
+    icon: "/brand/S.png",
+    apple: "/brand/S.png",
   },
 };
 

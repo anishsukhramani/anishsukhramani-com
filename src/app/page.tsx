@@ -3,14 +3,16 @@ import type { Metadata } from "next";
 import { HomeSearch } from "@/components/home-search";
 import { PostCard } from "@/components/post-card";
 import { getAllPosts } from "@/lib/content/posts";
-import { getSiteUrl } from "@/lib/env";
+import { getSiteUrl, SITE_DISPLAY_NAME } from "@/lib/env";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: {
+    absolute: SITE_DISPLAY_NAME,
+  },
   description:
     "Essays and notes on software, design, and the craft of building products.",
   openGraph: {
-    title: "Editorial — Home",
+    title: SITE_DISPLAY_NAME,
     description:
       "Essays and notes on software, design, and the craft of building products.",
     url: getSiteUrl(),
@@ -52,6 +54,7 @@ export default async function HomePage() {
             height={2512}
             className="absolute inset-0 h-full w-full object-cover lg:relative lg:inset-auto lg:h-[100dvh] lg:w-auto lg:max-w-none lg:object-contain"
             priority
+            loading="eager"
             sizes="(max-width: 1023px) 100vw, 100vh"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 to-transparent lg:from-background/25" />

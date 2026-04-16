@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getSiteUrl } from "@/lib/env";
+import { getSiteUrl, sitePageTitle } from "@/lib/env";
 import type { Post } from "@/types/post";
 
 export function buildPostMetadata(post: Post): Metadata {
@@ -14,7 +14,7 @@ export function buildPostMetadata(post: Post): Metadata {
     keywords: post.keywords.length > 0 ? post.keywords : undefined,
     robots: post.noindex ? { index: false, follow: false } : undefined,
     openGraph: {
-      title: post.title,
+      title: sitePageTitle(post.title),
       description,
       type: "article",
       publishedTime: post.published_at,
@@ -25,7 +25,7 @@ export function buildPostMetadata(post: Post): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
+      title: sitePageTitle(post.title),
       description,
       images: post.cover_image_url ? [post.cover_image_url] : undefined,
     },
