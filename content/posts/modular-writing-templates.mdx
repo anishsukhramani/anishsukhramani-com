@@ -1,0 +1,48 @@
+---
+slug: modular-writing-templates
+title: Modular Writing Templates
+description: How reusable article templates let design updates apply across old and new posts instantly.
+excerpt: Keep article content independent from presentation by moving layout concerns into shared components.
+publishedAt: 2026-03-20T10:00:00+00:00
+updatedAt: 2026-03-20T10:00:00+00:00
+featured: false
+tags:
+  - design-system
+  - mdx
+  - frontend
+keywords:
+  - reusable article template
+  - mdx component map
+---
+
+When each post owns its layout, redesigns become migration projects.
+When layout is centralized, redesigns become component updates.
+
+## Template boundaries
+
+Keep these concerns in the template layer:
+
+- spacing
+- typography rhythm
+- TOC behavior
+- callout styles
+- code block styling
+
+Keep this in the post file:
+
+- ideas
+- headings
+- media
+- code examples
+
+## Example
+
+```tsx
+export function PostTemplate({ post, children }: Props) {
+  return <article className="mx-auto max-w-6xl">{children}</article>;
+}
+```
+
+## Practical result
+
+A single update to `PostTemplate` can refresh every historical article without touching content files.

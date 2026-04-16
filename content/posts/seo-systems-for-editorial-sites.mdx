@@ -1,0 +1,49 @@
+---
+slug: seo-systems-for-editorial-sites
+title: SEO Systems for Editorial Sites
+description: Build reusable SEO infrastructure once, then apply it consistently across every article route.
+excerpt: A component-first way to standardize metadata, JSON-LD, and canonical strategy.
+publishedAt: 2026-03-11T08:30:00+00:00
+updatedAt: 2026-03-12T11:15:00+00:00
+featured: true
+tags:
+  - seo
+  - metadata
+  - content
+keywords:
+  - blog seo template
+  - json-ld blogposting
+  - canonical url strategy
+geo:
+  locale: en_US
+---
+
+SEO quality in content products usually fails from inconsistency, not from missing features.
+
+## Standardize metadata contracts
+
+Every post should enforce required fields before it can ship:
+
+- title
+- description
+- publish date
+- slug
+- image alt text when a cover exists
+
+## Ship structured data by default
+
+Each post route should emit:
+
+1. `BlogPosting`
+2. `BreadcrumbList`
+
+This makes rich indexing easier and keeps your implementation predictable.
+
+## Keep content custom, keep infrastructure shared
+
+Per-post text and keywords should remain custom.
+The pipeline that renders metadata should stay shared and versioned.
+
+## GEO-ready fields
+
+Optional location metadata gives you room to expand geo-targeted search strategies later without redesigning your schema.

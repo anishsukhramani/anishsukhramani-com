@@ -1,0 +1,56 @@
+---
+slug: designing-static-blogs-for-scale
+title: Designing a Static Blog for Scale
+description: A practical blueprint for growing a file-based blog to thousands of posts without introducing a database.
+excerpt: How to keep build time, search, and SEO healthy as your static blog grows.
+publishedAt: 2026-03-02T09:00:00+00:00
+updatedAt: 2026-03-02T09:00:00+00:00
+coverImage: /anishsukhramaniheroimage.jpg
+coverImageAlt: Portrait used as a sample cover image
+featured: true
+tags:
+  - architecture
+  - seo
+  - performance
+keywords:
+  - static blog architecture
+  - mdx at scale
+  - build performance
+geo:
+  locale: en_US
+---
+
+Scaling a static blog is less about adding infrastructure and more about organizing content and compute work deliberately.
+
+## Why static still scales
+
+A static-first blog can remain fast, portable, and secure even with thousands of posts when:
+
+- content is normalized with strict frontmatter
+- expensive transforms are cached
+- search indexes are precomputed
+- shared layouts are centralized
+
+## Build-time budget discipline
+
+Treat build time as a product metric. Any expensive operation should be measured and moved into precomputed artifacts.
+
+### Example cache key strategy
+
+```ts
+type ArtifactKey = {
+  slug: string;
+  sha256: string;
+  schemaVersion: number;
+};
+```
+
+When the markdown file hash does not change, reuse heading extraction, plain-text extraction, and reading-time outputs.
+
+## Search without backend lock-in
+
+Use a local static index first. Keep a provider interface so you can swap to hosted search later without rewriting UI routes.
+
+## Closing note
+
+The best signal that your architecture is healthy is that adding a new post feels boring and predictable.

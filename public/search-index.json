@@ -1,0 +1,50 @@
+[
+  {
+    "id": "designing-static-blogs-for-scale",
+    "slug": "designing-static-blogs-for-scale",
+    "title": "Designing a Static Blog for Scale",
+    "excerpt": "How to keep build time, search, and SEO healthy as your static blog grows.",
+    "published_at": "2026-03-02T09:00:00.000Z",
+    "cover_image_url": "/anishsukhramaniheroimage.jpg",
+    "featured": true,
+    "word_count": 147,
+    "tags": [
+      "architecture",
+      "seo",
+      "performance"
+    ],
+    "searchableText": "designing a static blog for scale a practical blueprint for growing a file-based blog to thousands of posts without introducing a database. how to keep build time, search, and seo healthy as your static blog grows. architecture seo performance scaling a static blog is less about adding infrastructure and more about organizing content and compute work deliberately. why static still scales a static first blog can remain fast, portable, and secure even with thousands of posts when: content is normalized with strict frontmatter expensive transforms are cached search indexes are precomputed shared layouts are centralized build time budget discipline treat build time as a product metric. any expensive operation should be measured and moved into precomputed artifacts. example cache key strategy when the markdown file hash does not change, reuse heading extraction, plain text extraction, and reading time outputs. search without backend lock in use a local static index first. keep a provider interface so you can swap to hosted search later without rewriting ui routes. closing note the best signal that your architecture is healthy is that adding a new post feels boring and predictable."
+  },
+  {
+    "id": "modular-writing-templates",
+    "slug": "modular-writing-templates",
+    "title": "Modular Writing Templates",
+    "excerpt": "Keep article content independent from presentation by moving layout concerns into shared components.",
+    "published_at": "2026-03-20T10:00:00.000Z",
+    "cover_image_url": null,
+    "featured": false,
+    "word_count": 64,
+    "tags": [
+      "design-system",
+      "mdx",
+      "frontend"
+    ],
+    "searchableText": "modular writing templates how reusable article templates let design updates apply across old and new posts instantly. keep article content independent from presentation by moving layout concerns into shared components. design-system mdx frontend when each post owns its layout, redesigns become migration projects. when layout is centralized, redesigns become component updates. template boundaries keep these concerns in the template layer: spacing typography rhythm toc behavior callout styles code block styling keep this in the post file: ideas headings media code examples example practical result a single update to can refresh every historical article without touching content files."
+  },
+  {
+    "id": "seo-systems-for-editorial-sites",
+    "slug": "seo-systems-for-editorial-sites",
+    "title": "SEO Systems for Editorial Sites",
+    "excerpt": "A component-first way to standardize metadata, JSON-LD, and canonical strategy.",
+    "published_at": "2026-03-11T08:30:00.000Z",
+    "cover_image_url": null,
+    "featured": true,
+    "word_count": 104,
+    "tags": [
+      "seo",
+      "metadata",
+      "content"
+    ],
+    "searchableText": "seo systems for editorial sites build reusable seo infrastructure once, then apply it consistently across every article route. a component-first way to standardize metadata, json-ld, and canonical strategy. seo metadata content seo quality in content products usually fails from inconsistency, not from missing features. standardize metadata contracts every post should enforce required fields before it can ship: title description publish date slug image alt text when a cover exists ship structured data by default each post route should emit: 1. 2. this makes rich indexing easier and keeps your implementation predictable. keep content custom, keep infrastructure shared per post text and keywords should remain custom. the pipeline that renders metadata should stay shared and versioned. geo ready fields optional location metadata gives you room to expand geo targeted search strategies later without redesigning your schema."
+  }
+]
