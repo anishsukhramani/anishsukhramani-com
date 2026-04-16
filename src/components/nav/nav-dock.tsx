@@ -105,7 +105,7 @@ export function NavDock() {
         <div className="min-w-0" aria-hidden />
         <Link
           href="/"
-          className="flex h-full min-h-10 w-full min-w-0 items-center justify-center rounded-lg px-1 py-1 transition-opacity hover:opacity-90"
+          className="flex h-full min-h-10 w-full min-w-0 items-stretch justify-center rounded-lg px-1 py-1 transition-opacity hover:opacity-90"
           aria-label="Home"
         >
           <BrandMark variant="mobile" className="w-full max-w-full" />

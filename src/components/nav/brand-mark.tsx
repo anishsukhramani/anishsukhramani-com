@@ -14,15 +14,39 @@ type BrandMarkProps = {
 export function BrandMark({ className, variant = "rail" }: BrandMarkProps) {
   const isMobile = variant === "mobile";
 
-  /** Clip box: fixed height in the nav; inner image is scaled up and cropped. */
-  const clipBox = isMobile
-    ? "h-[52px] sm:h-14"
-    : "h-10 xl:h-[52px]";
+  if (isMobile) {
+    return (
+      <span
+        className={cn(
+          "relative flex h-full min-h-0 w-full min-w-0 max-w-full items-stretch justify-center",
+          className
+        )}
+      >
+        <Image
+          src={LIGHT}
+          alt=""
+          width={640}
+          height={120}
+          sizes="(max-width: 1024px) 95vw, 400px"
+          className="block h-full w-auto max-w-full object-contain object-center dark:hidden"
+          priority
+        />
+        <Image
+          src={DARK}
+          alt=""
+          width={640}
+          height={120}
+          sizes="(max-width: 1024px) 95vw, 400px"
+          className="hidden h-full w-auto max-w-full object-contain object-center dark:block"
+          priority
+        />
+      </span>
+    );
+  }
 
-  /** Zoom: larger = more “magnified” signature inside the same clip (edges crop). */
-  const zoomInner = isMobile
-    ? "w-[min(100%,28rem)] scale-[0.96] sm:scale-[1]"
-    : "w-full max-w-[13rem] scale-[0.94] xl:scale-[0.96]";
+  /** Rail: clip box + zoom keep the wide asset legible in the sidebar. */
+  const clipBox = "h-10 xl:h-[52px]";
+  const zoomInner = "w-full max-w-[13rem] scale-[0.94] xl:scale-[0.96]";
 
   return (
     <span
@@ -32,7 +56,6 @@ export function BrandMark({ className, variant = "rail" }: BrandMarkProps) {
         className
       )}
     >
-      {/* Centered layer: translate + scale keeps the mark centered while zooming */}
       <span
         className={cn(
           "absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2",
@@ -44,11 +67,7 @@ export function BrandMark({ className, variant = "rail" }: BrandMarkProps) {
           alt=""
           width={640}
           height={120}
-          sizes={
-            isMobile
-              ? "(max-width: 1024px) 95vw, 400px"
-              : "(max-width: 1280px) 5rem, 14rem"
-          }
+          sizes="(max-width: 1280px) 5rem, 14rem"
           className="block h-auto w-full object-contain object-center dark:hidden"
           priority
         />
@@ -57,11 +76,7 @@ export function BrandMark({ className, variant = "rail" }: BrandMarkProps) {
           alt=""
           width={640}
           height={120}
-          sizes={
-            isMobile
-              ? "(max-width: 1024px) 95vw, 400px"
-              : "(max-width: 1280px) 5rem, 14rem"
-          }
+          sizes="(max-width: 1280px) 5rem, 14rem"
           className="hidden h-auto w-full object-contain object-center dark:block"
           priority
         />
