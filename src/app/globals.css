@@ -129,11 +129,13 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply overflow-x-hidden font-sans;
+    /* Clip horizontal bleed without pairing `hidden` on html+body (Chromium can break trackpad scroll). */
+    @apply overflow-x-clip font-sans;
+    /* Stop rubber-band overscroll at scroll bounds (blank gap behind the page). */
     overscroll-behavior: none;
   }
   body {
-    @apply overflow-x-hidden bg-background text-foreground;
+    @apply bg-background text-foreground;
     overscroll-behavior: none;
   }
 }

@@ -9,7 +9,7 @@ alwaysApply: true
 
 - **`next/image`**: Always set explicit `width`/`height`, or `fill` inside a parent with fixed **`aspect-*`** (or fixed height) so nothing reflows when media loads.
 - **Embeds / third-party blocks**: Reserve height with **`min-h-*`** (see newsletter placeholders) before scripts or iframes load.
-- **Global**: Do not introduce horizontal page scroll; use **`min-w-0`** on flex/grid children that should shrink. **`overflow-x-hidden`** is set on `html`/`body` in [`src/app/globals.css`](src/app/globals.css).
+- **Global**: Do not introduce horizontal page scroll; use **`min-w-0`** on flex/grid children that should shrink. Use **`overflow-x-clip` on `html` only** (not `overflow-x-hidden` on both `html` and `body`—Chromium can mishandle trackpad scroll). See [`src/app/globals.css`](src/app/globals.css).
 - **Safe areas**: Compose **`env(safe-area-inset-*)`** with layout padding on the shell and nav (see [`src/components/nav/shell.tsx`](src/components/nav/shell.tsx), [`src/components/nav/nav-dock.tsx`](src/components/nav/nav-dock.tsx)).
 
 ## Motion (compute-light)

@@ -60,7 +60,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${dmSans.variable} ${fraunces.variable} ${geistMono.variable} min-h-full antialiased`}
+      className={`${dmSans.variable} ${fraunces.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body
         className="min-h-full bg-background font-sans text-foreground"
