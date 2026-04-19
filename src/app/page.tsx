@@ -52,7 +52,7 @@ export default async function HomePage() {
         {/* lg+: full viewport height, width from aspect ratio (no crop); flush right */}
         <div className="relative mx-auto mt-12 aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-border/80 bg-muted shadow-xl lg:mt-0 lg:aspect-auto lg:h-[100dvh] lg:w-max lg:max-w-none lg:rounded-none lg:border-0 lg:shadow-none lg:overflow-visible">
           <FrictionImage
-            src="/anishsukhramaniheroimage.png"
+            src="/anishsukhramaniheroimage.jpg"
             alt="Portrait"
             width={1884}
             height={2512}
