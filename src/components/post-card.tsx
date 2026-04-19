@@ -6,8 +6,11 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function PostCard({ post }: { post: PostListItem }) {
   return (
-    <Link href={`/blog/${post.slug}`} className="group block h-full">
-      <Card className="h-full overflow-hidden border-border/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group block h-full origin-center transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] active:scale-[0.98]"
+    >
+      <Card className="h-full overflow-hidden border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:-translate-y-0.5 dark:shadow-[0_8px_30px_rgb(0,0,0,0.18)]">
         <div className="relative aspect-[16/10] w-full bg-muted">
           {post.cover_image_url ? (
             <Image
@@ -24,7 +27,7 @@ export function PostCard({ post }: { post: PostListItem }) {
           )}
         </div>
         <CardContent className="space-y-3 p-6">
-          <h2 className="font-heading text-xl font-semibold leading-snug tracking-tight group-hover:text-primary">
+          <h2 className="font-heading text-subsection font-semibold leading-snug tracking-tight group-hover:text-primary">
             {post.title}
           </h2>
           {post.excerpt && (

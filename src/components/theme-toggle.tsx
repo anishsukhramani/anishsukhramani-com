@@ -4,6 +4,7 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { triggerHaptic } from "@/lib/haptics";
 
 export function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -24,7 +25,10 @@ export function ThemeToggle() {
       size="icon"
       className="size-10 rounded-xl"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={() => {
+        triggerHaptic(50);
+        setTheme(isDark ? "light" : "dark");
+      }}
     >
       {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
     </Button>

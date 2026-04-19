@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { triggerHaptic } from "@/lib/haptics";
 
 type PlaceholdersAndVanishInputProps = {
   placeholders: string[];
@@ -54,6 +55,7 @@ export function PlaceholdersAndVanishInput({
       return;
     }
 
+    triggerHaptic(50);
     setIsVanishing(true);
     window.setTimeout(() => {
       onSubmit(e);
@@ -73,8 +75,8 @@ export function PlaceholdersAndVanishInput({
             <span
               key={placeholderIndex}
               className={cn(
-                "pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 pr-2 text-sm text-muted-foreground transition-all duration-300",
-                isVanishing && "translate-y-1 opacity-0 blur-[1px]"
+                "pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 pr-2 text-sm text-muted-foreground transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]",
+                isVanishing && "translate-y-1 opacity-0"
               )}
             >
               {currentPlaceholder}
@@ -98,8 +100,8 @@ export function PlaceholdersAndVanishInput({
             <span
               aria-hidden
               className={cn(
-                "pointer-events-none absolute left-10 top-1/2 max-w-[calc(100%-3.5rem)] -translate-y-1/2 truncate text-sm text-foreground transition-all duration-200",
-                isVanishing ? "scale-95 opacity-0 blur-[2px]" : "opacity-0"
+                "pointer-events-none absolute left-10 top-1/2 max-w-[calc(100%-3.5rem)] -translate-y-1/2 truncate text-sm text-foreground transition-[transform,opacity] duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]",
+                isVanishing ? "scale-95 opacity-0" : "opacity-0"
               )}
             >
               {value}
@@ -109,7 +111,7 @@ export function PlaceholdersAndVanishInput({
 
         <button
           type="submit"
-          className="mr-1.5 inline-flex h-9 items-center justify-center rounded-xl px-4 text-sm font-medium text-primary transition-colors hover:bg-muted"
+          className="mr-1.5 inline-flex h-9 origin-center items-center justify-center rounded-xl px-4 text-sm font-medium text-primary transition-[transform,opacity,color,background-color] duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:bg-muted active:scale-[0.98]"
         >
           {buttonLabel}
         </button>

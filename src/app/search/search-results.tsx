@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
 import { PostCard } from "@/components/post-card";
+import { SearchResultsGridSkeleton } from "@/components/skeletons/search-results-grid-skeleton";
 import { createSearchProvider } from "@/lib/search/providers";
 import type { SearchIndexEntry } from "@/lib/search/types";
 import type { PostListItem } from "@/types/post";
@@ -69,7 +70,7 @@ export function SearchResults() {
     return (
       <>
         <p className="mt-6 text-sm text-muted-foreground">Results for “{query}”</p>
-        <p className="mt-8 text-muted-foreground">Searching…</p>
+        <SearchResultsGridSkeleton />
       </>
     );
   }

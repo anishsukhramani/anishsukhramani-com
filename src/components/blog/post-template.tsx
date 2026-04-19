@@ -33,11 +33,11 @@ export function PostTemplate({
                 day: "numeric",
               })}
             </p>
-            <h1 className="mt-4 font-heading text-4xl font-semibold leading-[1.15] tracking-tight sm:text-5xl">
+            <h1 className="mt-4 font-heading text-hero font-semibold leading-[1.15] tracking-tight">
               {post.title}
             </h1>
             {post.excerpt && (
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              <p className="mt-6 text-lead leading-relaxed text-muted-foreground">
                 {post.excerpt}
               </p>
             )}

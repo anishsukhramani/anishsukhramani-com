@@ -1,0 +1,38 @@
+---
+description: Premium UI — CLS, motion, RSC, skeletons, haptics, tokens (Apple-standard baseline)
+alwaysApply: true
+---
+
+# Premium frontend (this repo)
+
+## Layout and stability
+
+- **`next/image`**: Always set explicit `width`/`height`, or `fill` inside a parent with fixed **`aspect-*`** (or fixed height) so nothing reflows when media loads.
+- **Embeds / third-party blocks**: Reserve height with **`min-h-*`** (see newsletter placeholders) before scripts or iframes load.
+- **Global**: Do not introduce horizontal page scroll; use **`min-w-0`** on flex/grid children that should shrink. **`overflow-x-hidden`** is set on `html`/`body` in [`src/app/globals.css`](src/app/globals.css).
+- **Safe areas**: Compose **`env(safe-area-inset-*)`** with layout padding on the shell and nav (see [`src/components/nav/shell.tsx`](src/components/nav/shell.tsx), [`src/components/nav/nav-dock.tsx`](src/components/nav/nav-dock.tsx)).
+
+## Motion (compute-light)
+
+- Animate **only `transform` and `opacity`** for ongoing transitions. Do **not** animate `width`, `height`, `margin`, `padding`, or rely on **`width`**-based progress bars; use **`scaleX`** + `transform-origin` (see [`src/components/reading/reading-progress.tsx`](src/components/reading/reading-progress.tsx)).
+- Avoid **`transition-all`**. Prefer **`transition-[transform,opacity,...]`** with an explicit list. Prefer **CSS** over adding **`framer-motion`** unless an interaction truly cannot be expressed in CSS.
+- **Tactile feedback**: Primary controls use **`active:scale-[0.98]`** (or stricter for dense icon buttons) with **`ease-[cubic-bezier(0.175,0.885,0.32,1.275)]`** where appropriate (see [`src/components/ui/button.tsx`](src/components/ui/button.tsx)).
+- **Haptics**: Use **`triggerHaptic`** from [`src/lib/haptics.ts`](src/lib/haptics.ts) on high-intent actions (theme change, successful search submit, primary form submit when wired).
+
+## Server vs client
+
+- Default to **React Server Components**. Add **`"use client"`** only for real interactivity (nav, theme, search, reading aids, form controls, Base UI primitives).
+
+## Loading and perceived performance
+
+- For deferred or streamed UI, use **`<Suspense>`** with a **skeleton that matches final layout** — reuse [`src/components/skeletons/`](src/components/skeletons/) patterns (e.g. [`PostCardSkeleton`](src/components/skeletons/post-card-skeleton.tsx), [`SearchResultsGridSkeleton`](src/components/skeletons/search-results-grid-skeleton.tsx)). Avoid blank fallbacks and generic spinners for page-level content.
+
+## Typography and tokens
+
+- Prefer fluid tokens: **`text-hero`**, **`text-page`**, **`text-section`**, **`text-subsection`**, **`text-lead`**, **`text-prose`** from [`src/app/globals.css`](src/app/globals.css) for headings and body instead of ad-hoc `text-*` steps.
+- Keep the palette **monochrome** with **one intentional accent** via existing CSS variables (`--primary`, `--ring`, dark **`--sidebar-primary`** hue); avoid stray hex colors.
+- **Cards** use **`rounded-2xl`** via [`src/components/ui/card.tsx`](src/components/ui/card.tsx).
+
+## Nav / glass
+
+- Sticky or fixed nav surfaces use **translucent background + `backdrop-blur-xl`** and subtle **border-white/10**-style edges; align new chrome with [`NavDock`](src/components/nav/nav-dock.tsx).

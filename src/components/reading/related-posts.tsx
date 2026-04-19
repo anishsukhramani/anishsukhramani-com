@@ -11,14 +11,18 @@ export function RelatedPosts({ posts }: { posts: PostListItem[] }) {
     <section className="mt-20 border-t border-border pt-12" aria-labelledby="related-heading">
       <h2
         id="related-heading"
-        className="font-heading text-2xl font-semibold tracking-tight"
+        className="font-heading text-section font-semibold tracking-tight"
       >
         Read next
       </h2>
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <Link key={post.id} href={`/blog/${post.slug}`} className="group block">
-            <Card className="h-full overflow-hidden border-border/80 transition-shadow duration-200 hover:shadow-md">
+          <Link
+            key={post.id}
+            href={`/blog/${post.slug}`}
+            className="group block origin-center transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] active:scale-[0.98]"
+          >
+            <Card className="h-full overflow-hidden border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:-translate-y-0.5 dark:shadow-[0_8px_30px_rgb(0,0,0,0.18)]">
               <div className="relative aspect-[16/10] w-full bg-muted">
                 {post.cover_image_url ? (
                   <Image
@@ -35,7 +39,7 @@ export function RelatedPosts({ posts }: { posts: PostListItem[] }) {
                 )}
               </div>
               <CardContent className="p-5">
-                <p className="font-heading text-lg font-semibold leading-snug tracking-tight group-hover:text-primary">
+                <p className="font-heading text-subsection font-semibold leading-snug tracking-tight group-hover:text-primary">
                   {post.title}
                 </p>
                 {post.excerpt && (

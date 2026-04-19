@@ -21,10 +21,10 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-8">
       <header className="max-w-2xl">
-        <h1 className="font-heading text-4xl font-semibold tracking-tight">
+        <h1 className="font-heading text-page font-semibold tracking-tight">
           About
         </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-4 text-lead text-muted-foreground">
           Builder, writer, and lifelong learner. Replace this copy with your
           story.
         </p>
@@ -47,7 +47,7 @@ export default function AboutPage() {
         ))}
       </section>
 
-      <section className="mt-16 max-w-[65ch] space-y-6 text-[17px] leading-relaxed text-foreground/90">
+      <section className="mt-16 max-w-[65ch] space-y-6 text-prose leading-relaxed text-foreground/90">
         <h2 className="font-heading text-2xl font-semibold tracking-tight">
           Now
         </h2>

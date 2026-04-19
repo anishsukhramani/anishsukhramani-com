@@ -26,17 +26,17 @@ export default function ConnectPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-8">
       <header className="max-w-2xl">
-        <h1 className="font-heading text-4xl font-semibold tracking-tight">
+        <h1 className="font-heading text-page font-semibold tracking-tight">
           Connect
         </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-4 text-lead text-muted-foreground">
           Say hello, propose a collaboration, or share something worth reading.
         </p>
       </header>
 
       <section className="mt-12 grid gap-10 lg:grid-cols-2">
         <div>
-          <h2 className="font-heading text-xl font-semibold">Profiles</h2>
+          <h2 className="font-heading text-section font-semibold">Profiles</h2>
           <ul className="mt-6 space-y-3">
             {socials.map(({ label, href, icon: Icon }) => (
               <li key={label}>
@@ -58,7 +58,7 @@ export default function ConnectPage() {
         </div>
 
         <div className="rounded-2xl border border-border/80 bg-card p-6 shadow-sm">
-          <h2 className="font-heading text-xl font-semibold">Send a note</h2>
+          <h2 className="font-heading text-subsection font-semibold">Send a note</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             This form is a visual shell. Wire it to Resend or your API when you
             are ready; until then, email works instantly.

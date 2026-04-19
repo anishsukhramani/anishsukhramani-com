@@ -12,7 +12,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <NavDock />
       <main
         id="main"
-        className="min-h-screen pt-14 lg:ml-[4.75rem] lg:pt-0 xl:ml-[13rem]"
+        className="min-h-screen pt-[calc(3.5rem+env(safe-area-inset-top,0px))] pb-[env(safe-area-inset-bottom,0px)] lg:ml-[4.75rem] lg:pt-0 lg:pb-[env(safe-area-inset-bottom,0px)] xl:ml-[13rem]"
       >
         {children}
       </main>

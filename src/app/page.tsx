@@ -40,10 +40,10 @@ export default async function HomePage() {
           <p className="font-heading text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
             Personal journal
           </p>
-          <h1 className="font-heading text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
+          <h1 className="font-heading text-hero font-semibold leading-[1.1] tracking-tight">
             Calm writing for curious readers.
           </h1>
-          <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <p className="max-w-xl text-lead leading-relaxed text-muted-foreground">
             Technical deep dives, product notes, and occasional essays — laid
             out with care so you can read without friction.
           </p>
@@ -61,7 +61,7 @@ export default async function HomePage() {
             loading="eager"
             sizes="(max-width: 1023px) 100vw, 100vh"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 to-transparent lg:from-background/25" />
+          <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-background/40 to-transparent dark:block lg:from-background/25" />
         </div>
       </section>
 
@@ -69,7 +69,7 @@ export default async function HomePage() {
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-8">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <h2 className="font-heading text-2xl font-semibold tracking-tight">
+              <h2 className="font-heading text-section font-semibold tracking-tight">
                 Featured
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -86,7 +86,7 @@ export default async function HomePage() {
       )}
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-8">
-        <h2 className="font-heading text-2xl font-semibold tracking-tight">
+        <h2 className="font-heading text-section font-semibold tracking-tight">
           Latest
         </h2>
         <p className="mt-2 text-sm text-muted-foreground">
