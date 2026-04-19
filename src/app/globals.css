@@ -130,7 +130,6 @@
   }
   html {
     @apply overflow-x-hidden font-sans;
-    /* Stop rubber-band overscroll at scroll bounds (blank gap behind the page). */
     overscroll-behavior: none;
   }
   body {
