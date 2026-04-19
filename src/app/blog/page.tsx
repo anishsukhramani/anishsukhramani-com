@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { PostCard } from "@/components/post-card";
 import { getAllPosts } from "@/lib/content/posts";
+import { absolutePublicUrl } from "@/lib/seo/public-url";
+
+const canonical = absolutePublicUrl("/blog");
 
 export const metadata: Metadata = {
   title: "Writings",
   description: "All published essays and notes.",
+  alternates: { canonical },
+  openGraph: { url: canonical },
 };
 
 export default async function BlogIndexPage() {

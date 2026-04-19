@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { absolutePublicUrl } from "@/lib/seo/public-url";
+
+const canonical = absolutePublicUrl("/about");
 
 export const metadata: Metadata = {
   title: "About",
   description: "Background, work, and what drives this journal.",
+  alternates: { canonical },
+  openGraph: { url: canonical },
 };
 
 const gallery = [

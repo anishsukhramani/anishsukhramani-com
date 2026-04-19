@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { absolutePublicUrl } from "@/lib/seo/public-url";
+
+const canonical = absolutePublicUrl("/newsletter");
 
 export const metadata: Metadata = {
   title: "Newsletter",
   description: "Subscribe on the platforms where this work is syndicated.",
+  alternates: { canonical },
+  openGraph: { url: canonical },
 };
 
 const platforms = [

@@ -5,10 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { absolutePublicUrl } from "@/lib/seo/public-url";
+
+const canonical = absolutePublicUrl("/connect");
 
 export const metadata: Metadata = {
   title: "Connect",
   description: "Social profiles and a direct line for thoughtful messages.",
+  alternates: { canonical },
+  openGraph: { url: canonical },
 };
 
 const socials = [

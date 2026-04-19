@@ -1,6 +1,13 @@
 /** Display name for `<title>`, Open Graph, and branding. */
 export const SITE_DISPLAY_NAME = "Anish Sukhramani" as const;
 
+/**
+ * Canonical site origin (no trailing slash). Used for metadata, sitemap, and
+ * JSON-LD. In production, set `NEXT_PUBLIC_SITE_URL` to exactly one preferred
+ * host (e.g. `https://anishsukhramani.com`). Redirect the alternate host
+ * (apex vs `www`) to this URL in Vercel domain settings so crawlers never see
+ * two live origins.
+ */
 export function getSiteUrl(): string {
   return (
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "http://localhost:3000"

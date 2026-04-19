@@ -1,0 +1,24 @@
+---
+description: Pre-deploy checklist — canonical URL, sitemap, Lighthouse CI, content slugs
+alwaysApply: true
+---
+
+# Deploy and SEO compliance (this repo)
+
+## Canonical site URL
+
+- **`NEXT_PUBLIC_SITE_URL`** in Vercel (Production): exactly **one** origin, **no trailing slash** (e.g. `https://anishsukhramani.com`). This drives [`src/lib/env.ts`](src/lib/env.ts) → metadata, sitemap, robots, and post canonicals.
+- In **Vercel → Domains**, redirect the **non-primary** host (apex vs `www`) with **301** to that same origin so crawlers never see two live sites.
+
+## Routes and sitemap
+
+- When you add or remove **indexable** top-level pages, update the static path list in [`src/app/sitemap.ts`](src/app/sitemap.ts) so it stays in sync with [`src/app/`](src/app/).
+
+## Lighthouse CI (`lighthouserc.json`)
+
+- URLs under `ci.collect.url` are audited against `next start`. If you **remove or rename** a post whose `/blog/...` URL is listed there (e.g. `seo-systems-for-editorial-sites`), **update [`lighthouserc.json`](lighthouserc.json)** or the workflow will fail on a 404.
+- After large performance, accessibility, or metadata changes, run locally: `npm run build && npm run lhci` (Chrome required). Tightening category `minScore` values increases CI flakiness, especially on **mobile** performance.
+
+## Optional GitHub
+
+- To **block merges** when Lighthouse fails: branch protection on `main` → require the status check for the **Lighthouse audit** job (see comments in [`.github/workflows/lighthouse.yml`](.github/workflows/lighthouse.yml)).

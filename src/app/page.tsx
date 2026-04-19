@@ -1,9 +1,12 @@
-import Image from "next/image";
 import type { Metadata } from "next";
+import { FrictionImage } from "@/components/media/friction-image";
 import { HomeSearch } from "@/components/home-search";
 import { PostCard } from "@/components/post-card";
 import { getAllPosts } from "@/lib/content/posts";
-import { getSiteUrl, SITE_DISPLAY_NAME } from "@/lib/env";
+import { SITE_DISPLAY_NAME } from "@/lib/env";
+import { absolutePublicUrl } from "@/lib/seo/public-url";
+
+const canonical = absolutePublicUrl("");
 
 export const metadata: Metadata = {
   title: {
@@ -11,11 +14,12 @@ export const metadata: Metadata = {
   },
   description:
     "Essays and notes on software, design, and the craft of building products.",
+  alternates: { canonical },
   openGraph: {
     title: SITE_DISPLAY_NAME,
     description:
       "Essays and notes on software, design, and the craft of building products.",
-    url: getSiteUrl(),
+    url: canonical,
   },
 };
 
@@ -47,8 +51,8 @@ export default async function HomePage() {
         </div>
         {/* lg+: full viewport height, width from aspect ratio (no crop); flush right */}
         <div className="relative mx-auto mt-12 aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-border/80 bg-muted shadow-xl lg:mt-0 lg:aspect-auto lg:h-[100dvh] lg:w-max lg:max-w-none lg:rounded-none lg:border-0 lg:shadow-none lg:overflow-visible">
-          <Image
-            src="/anishsukhramaniheroimage.jpg"
+          <FrictionImage
+            src="/anishsukhramaniheroimage.png"
             alt="Portrait"
             width={1884}
             height={2512}
