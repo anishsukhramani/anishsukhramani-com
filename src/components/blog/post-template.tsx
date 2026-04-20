@@ -23,7 +23,7 @@ export function PostTemplate({
   return (
     <>
       <ReadingProgress />
-      <article className="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+      <article className="mx-auto max-w-6xl px-4 pb-16 pt-0 sm:px-8">
         <div className="mx-auto max-w-[65ch]">
           <header className="border-b border-border/60 pb-10">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">

@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 export default function RemotePage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-8">
-      <header className="max-w-3xl">
+      <header className="max-w-[65ch]">
         <p className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
           Operating model
         </p>
@@ -73,7 +73,7 @@ export default function RemotePage() {
         <h2 className="font-heading text-section font-semibold tracking-tight">
           PT overlap schedule
         </h2>
-        <p className="mt-3 max-w-3xl text-prose leading-relaxed text-muted-foreground">
+        <p className="mt-3 max-w-[65ch] text-prose leading-relaxed text-muted-foreground">
           The timezone gap is treated as leverage, not drag. Communication stays
           asynchronous by default, while critical collaboration always has PT
           overlap.

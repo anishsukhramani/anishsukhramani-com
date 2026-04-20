@@ -17,10 +17,27 @@ export function buildBrandedAlt(rawAlt: string, context?: string): string {
   return `${baseAlt}${ALT_SEPARATOR}${BRAND_PREFIX}${normalizedContext}`;
 }
 
-export function BrandImage({ alt, context, ...props }: BrandImageProps) {
+export function BrandImage({
+  alt,
+  context,
+  priority,
+  preload,
+  ...props
+}: BrandImageProps) {
   const normalizedAlt = typeof alt === "string" ? alt.trim() : "";
   const isDecorative = normalizedAlt.length === 0;
   const finalAlt = isDecorative ? "" : buildBrandedAlt(normalizedAlt, context);
 
-  return <Image {...props} alt={finalAlt} aria-hidden={isDecorative || props["aria-hidden"]} />;
+  // Next.js 16+: `preload` and `priority` must not be used together.
+  const effectivePriority = preload ? undefined : priority;
+
+  return (
+    <Image
+      {...props}
+      preload={preload}
+      priority={effectivePriority}
+      alt={finalAlt}
+      aria-hidden={isDecorative || props["aria-hidden"]}
+    />
+  );
 }

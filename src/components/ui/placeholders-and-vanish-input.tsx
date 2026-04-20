@@ -65,7 +65,7 @@ export function PlaceholdersAndVanishInput({
 
   return (
     <form onSubmit={handleSubmit} className={cn("w-full", className)}>
-      <div className="group relative flex h-12 w-full items-center overflow-hidden rounded-2xl border border-border/80 bg-background/80 shadow-sm backdrop-blur">
+      <div className="group relative flex min-h-12 w-full items-center overflow-hidden rounded-2xl border border-border/80 bg-background/80 shadow-sm backdrop-blur">
         <Search
           className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
           aria-hidden
@@ -75,7 +75,7 @@ export function PlaceholdersAndVanishInput({
             <span
               key={placeholderIndex}
               className={cn(
-                "pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 pr-2 text-sm text-muted-foreground transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)]",
+                "pointer-events-none absolute left-10 top-1/2 -translate-y-1/2 pr-2 text-sm text-muted-foreground transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] motion-reduce:transition-none",
                 isVanishing && "translate-y-1 opacity-0"
               )}
             >
@@ -111,7 +111,7 @@ export function PlaceholdersAndVanishInput({
 
         <button
           type="submit"
-          className="mr-1.5 inline-flex h-9 origin-center items-center justify-center rounded-xl px-4 text-sm font-medium text-primary transition-[transform,opacity,color,background-color] duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:bg-muted active:scale-[0.98]"
+          className="focus-ring mr-1.5 inline-flex min-h-11 min-w-11 origin-center items-center justify-center rounded-xl px-4 text-sm font-medium text-primary transition-[transform,opacity,color,background-color] duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:bg-muted active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100"
         >
           {buttonLabel}
         </button>

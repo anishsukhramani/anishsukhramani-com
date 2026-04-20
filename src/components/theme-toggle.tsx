@@ -12,7 +12,7 @@ export function ThemeToggle() {
   React.useEffect(() => setMounted(true), []);
   if (!mounted) {
     return (
-      <Button variant="ghost" size="icon" className="size-10 rounded-xl" aria-label="Theme">
+      <Button variant="ghost" size="icon" className="rounded-xl" aria-label="Theme">
         <Sun className="size-4" />
       </Button>
     );
@@ -23,7 +23,7 @@ export function ThemeToggle() {
       type="button"
       variant="ghost"
       size="icon"
-      className="size-10 rounded-xl"
+      className="rounded-xl"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       onClick={() => {
         triggerHaptic(50);

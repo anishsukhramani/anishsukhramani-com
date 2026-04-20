@@ -75,7 +75,6 @@ export default async function HomePage() {
               width={1884}
               height={2512}
               className="absolute inset-0 h-full w-full object-cover lg:relative lg:inset-auto lg:h-[100dvh] lg:w-auto lg:max-w-none lg:object-contain"
-              priority
               preload
               quality={72}
               sizes="(max-width: 640px) 92vw, (max-width: 1023px) 100vw, 72vh"

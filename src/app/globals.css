@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
@@ -67,7 +68,8 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  /* ~4.5:1+ on white surfaces for normal-sized secondary copy (WCAG 2.2 AA) */
+  --muted-foreground: oklch(0.42 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -102,7 +104,8 @@
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+  /* Secondary text on dark: readable vs near-black card/sidebar surfaces */
+  --muted-foreground: oklch(0.74 0 0);
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
@@ -139,6 +142,19 @@
     overscroll-behavior: none;
   }
 
+  /* Blog routes only: hide default viewport scrollbar (class toggled in `BlogScrollbar`). */
+  html.blog-hide-scrollbar,
+  body.blog-hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  html.blog-hide-scrollbar::-webkit-scrollbar,
+  body.blog-hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
   /* Text selection: invert page text/background (monochrome; follows light/dark tokens). */
   ::selection {
     background-color: var(--foreground);
@@ -147,5 +163,18 @@
   ::-moz-selection {
     background-color: var(--foreground);
     color: var(--background);
+  }
+}
+
+@layer utilities {
+  /* Keyboard parity with Button: ring + offset so focus is visible on light/dark surfaces */
+  .focus-ring {
+    @apply outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

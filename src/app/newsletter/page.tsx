@@ -48,9 +48,10 @@ export default function NewsletterPage() {
               <p className="text-sm text-muted-foreground">{p.description}</p>
               <a
                 href={p.href}
-                className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+                className="focus-ring inline-block rounded-sm text-sm font-medium text-primary underline-offset-4 hover:underline"
                 target="_blank"
                 rel="noreferrer"
+                aria-label={`Open ${p.name} in a new tab`}
               >
                 Open platform
               </a>

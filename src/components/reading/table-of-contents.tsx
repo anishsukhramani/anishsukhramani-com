@@ -31,7 +31,7 @@ export function TableOfContents({
           >
             <a
               href={`#${h.id}`}
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="focus-ring inline-block rounded-md py-1 text-muted-foreground transition-colors hover:text-foreground"
             >
               {h.text}
             </a>

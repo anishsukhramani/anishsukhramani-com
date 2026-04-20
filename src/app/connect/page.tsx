@@ -44,7 +44,8 @@ export default function ConnectPage() {
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-3 rounded-xl border border-border/80 bg-card px-4 py-3 text-sm font-medium transition-colors hover:bg-muted"
+                  aria-label={`${label} (opens in a new tab)`}
+                  className="focus-ring inline-flex items-center gap-3 rounded-xl border border-border/80 bg-card px-4 py-3 text-sm font-medium transition-colors hover:bg-muted"
                 >
                   <Icon className="size-4" aria-hidden />
                   {label}

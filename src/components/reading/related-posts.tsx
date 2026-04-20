@@ -20,16 +20,16 @@ export function RelatedPosts({ posts }: { posts: PostListItem[] }) {
           <Link
             key={post.id}
             href={`/blog/${post.slug}`}
-            className="group block origin-center transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] active:scale-[0.98]"
+            className="focus-ring group motion-reduce:transition-none motion-reduce:active:scale-100 block origin-center rounded-2xl transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] active:scale-[0.98]"
           >
-            <Card className="h-full overflow-hidden border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:-translate-y-0.5 dark:shadow-[0_8px_30px_rgb(0,0,0,0.18)]">
+            <Card className="h-full overflow-hidden border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:shadow-[0_8px_30px_rgb(0,0,0,0.18)]">
               <div className="relative aspect-[16/10] w-full bg-muted">
                 {post.cover_image_url ? (
                   <Image
                     src={post.cover_image_url}
                     alt=""
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 ) : (
