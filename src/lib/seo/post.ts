@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
-import { getSiteUrl, sitePageTitle } from "@/lib/env";
+import { getSiteUrl } from "@/lib/env";
+import { formatSeoPageTitle } from "@/lib/seo/seo";
 import type { Post } from "@/types/post";
+
+function buildPostSocialImageAlt(post: Post): string | undefined {
+  const baseAlt = post.cover_image_alt?.trim();
+  if (!baseAlt) return undefined;
+  const brandedMarker = " | Anish Sukhramani - ";
+  if (baseAlt.includes(brandedMarker)) return baseAlt;
+  return `${baseAlt}${brandedMarker}${post.title}`;
+}
 
 export function buildPostMetadata(post: Post): Metadata {
   const site = getSiteUrl();
   const canonical = post.canonical ?? `${site}/blog/${post.slug}`;
   const description = post.description;
+  const socialImageAlt = buildPostSocialImageAlt(post);
 
   return {
     title: post.title,
@@ -14,20 +24,24 @@ export function buildPostMetadata(post: Post): Metadata {
     keywords: post.keywords.length > 0 ? post.keywords : undefined,
     robots: post.noindex ? { index: false, follow: false } : undefined,
     openGraph: {
-      title: sitePageTitle(post.title),
+      title: formatSeoPageTitle(post.title),
       description,
       type: "article",
       publishedTime: post.published_at,
       modifiedTime: post.updated_at,
       url: canonical,
-      images: post.cover_image_url ? [{ url: post.cover_image_url }] : undefined,
+      images: post.cover_image_url
+        ? [{ url: post.cover_image_url, alt: socialImageAlt }]
+        : undefined,
       locale: post.geo?.locale,
     },
     twitter: {
       card: "summary_large_image",
-      title: sitePageTitle(post.title),
+      title: formatSeoPageTitle(post.title),
       description,
-      images: post.cover_image_url ? [post.cover_image_url] : undefined,
+      images: post.cover_image_url
+        ? [{ url: post.cover_image_url, alt: socialImageAlt }]
+        : undefined,
     },
   };
 }

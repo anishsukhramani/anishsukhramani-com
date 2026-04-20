@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   BookOpen,
+  Clock3,
   Home,
   Link2,
   Mail,
@@ -22,6 +23,7 @@ import { BrandMark } from "@/components/nav/brand-mark";
 const navItems = [
   { href: "/", label: "Home", icon: Home },
   { href: "/blog", label: "Writings", icon: BookOpen },
+  { href: "/remote", label: "Remote", icon: Clock3 },
   { href: "/search", label: "Search", icon: Search },
   { href: "/about", label: "About", icon: User },
   { href: "/newsletter", label: "Newsletter", icon: Mail },
@@ -66,7 +68,7 @@ function NavLinks({
               )}
               aria-hidden
             />
-            <span className="hidden lg:inline">{label}</span>
+            <span className="inline lg:sr-only xl:not-sr-only">{label}</span>
           </Link>
         );
       })}
@@ -123,7 +125,7 @@ export function NavDock() {
                 aria-expanded={mobileOpen}
                 onClick={() => setMobileOpen(true)}
               >
-                <Menu className="size-5" />
+                <Menu className="size-5" aria-hidden />
               </Button>
               <SheetContent side="left" className="w-72 p-0">
                 <div className="flex h-full flex-col gap-4 p-4">

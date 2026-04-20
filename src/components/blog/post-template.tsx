@@ -1,5 +1,5 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
+import { BrandImage } from "@/components/media/brand-image";
 import { ReadingProgress } from "@/components/reading/reading-progress";
 import { RelatedPosts } from "@/components/reading/related-posts";
 import { TableOfContents } from "@/components/reading/table-of-contents";
@@ -45,13 +45,15 @@ export function PostTemplate({
           </header>
           {post.cover_image_url && (
             <div className="relative mt-12 aspect-[21/9] w-full overflow-hidden rounded-3xl border border-border/80 bg-muted">
-              <Image
+              <BrandImage
                 src={post.cover_image_url}
                 alt={post.cover_image_alt ?? ""}
+                context={post.title}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 896px"
                 priority
+                loading="eager"
               />
             </div>
           )}

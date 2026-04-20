@@ -17,6 +17,11 @@ export function PostCard({ post }: { post: PostListItem }) {
               src={post.cover_image_url}
               alt=""
               fill
+              loading={
+                post.cover_image_url === "/anishsukhramaniheroimage.jpg"
+                  ? "eager"
+                  : "lazy"
+              }
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               sizes="(max-width: 768px) 100vw, 33vw"
             />

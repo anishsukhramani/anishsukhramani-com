@@ -3,7 +3,14 @@ import { DM_Sans, Fraunces, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Shell } from "@/components/nav/shell";
 import { ThemeProvider } from "@/components/theme-provider";
-import { getSiteUrl, SITE_DISPLAY_NAME } from "@/lib/env";
+import { getSiteUrl, PROFESSIONAL_IDENTITY } from "@/lib/env";
+import {
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_URL,
+  SEO_DESCRIPTION,
+  SEO_KEYWORDS,
+  SEO_TITLE_TEMPLATE,
+} from "@/lib/seo/seo";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -31,19 +38,25 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: SITE_DISPLAY_NAME,
-    template: `${SITE_DISPLAY_NAME} | %s`,
+    default: PROFESSIONAL_IDENTITY,
+    template: SEO_TITLE_TEMPLATE,
   },
-  description:
-    "Essays and notes on software, design, and everything in between.",
+  description: SEO_DESCRIPTION,
+  keywords: [...SEO_KEYWORDS],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: SITE_DISPLAY_NAME,
+    siteName: PROFESSIONAL_IDENTITY,
+    title: PROFESSIONAL_IDENTITY,
+    description: SEO_DESCRIPTION,
+    images: [{ url: DEFAULT_SOCIAL_IMAGE_URL, alt: DEFAULT_SOCIAL_IMAGE_ALT }],
   },
   twitter: {
     card: "summary_large_image",
+    title: PROFESSIONAL_IDENTITY,
+    description: SEO_DESCRIPTION,
+    images: [{ url: DEFAULT_SOCIAL_IMAGE_URL, alt: DEFAULT_SOCIAL_IMAGE_ALT }],
   },
   icons: {
     icon: "/brand/S.png",
@@ -58,7 +71,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-US"
       suppressHydrationWarning
       className={`${dmSans.variable} ${fraunces.variable} ${geistMono.variable} h-full antialiased`}
     >

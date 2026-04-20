@@ -1,5 +1,7 @@
 /** Display name for `<title>`, Open Graph, and branding. */
 export const SITE_DISPLAY_NAME = "Anish Sukhramani" as const;
+export const PROFESSIONAL_IDENTITY =
+  "Anish Sukhramani - Remote Software Engineer (Applied AI)" as const;
 
 /**
  * Canonical site origin (no trailing slash). Used for metadata, sitemap, and
@@ -15,5 +17,13 @@ export function getSiteUrl(): string {
 }
 
 export function sitePageTitle(segment: string): string {
-  return `${SITE_DISPLAY_NAME} | ${segment}`;
+  return `${segment} | ${PROFESSIONAL_IDENTITY}`;
+}
+
+export function getSameAsProfiles(): string[] {
+  return [
+    process.env.NEXT_PUBLIC_SAME_AS_GITHUB,
+    process.env.NEXT_PUBLIC_SAME_AS_LINKEDIN,
+    process.env.NEXT_PUBLIC_SAME_AS_X,
+  ].filter((value): value is string => Boolean(value));
 }

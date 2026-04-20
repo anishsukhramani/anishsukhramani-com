@@ -51,7 +51,7 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       <PostTemplate post={post} related={related}>
-        <MdxContent source={post.body} />
+        <MdxContent source={post.body} imageContext={post.title} />
       </PostTemplate>
     </>
   );
