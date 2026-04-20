@@ -76,8 +76,9 @@ export default async function HomePage() {
               height={2512}
               className="absolute inset-0 h-full w-full object-cover lg:relative lg:inset-auto lg:h-[100dvh] lg:w-auto lg:max-w-none lg:object-contain"
               priority
-              loading="eager"
-              sizes="(max-width: 1023px) 100vw, 100vh"
+              preload
+              quality={72}
+              sizes="(max-width: 640px) 92vw, (max-width: 1023px) 100vw, 72vh"
             />
             <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-background/40 to-transparent dark:block lg:from-background/25" />
           </div>

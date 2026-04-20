@@ -29,7 +29,6 @@ export function BrandMark({ className, variant = "rail" }: BrandMarkProps) {
           height={120}
           sizes="(max-width: 1024px) 95vw, 400px"
           className="block h-full w-auto max-w-full object-contain object-center dark:hidden"
-          priority
         />
         <Image
           src={DARK}
@@ -38,7 +37,6 @@ export function BrandMark({ className, variant = "rail" }: BrandMarkProps) {
           height={120}
           sizes="(max-width: 1024px) 95vw, 400px"
           className="hidden h-full w-auto max-w-full object-contain object-center dark:block"
-          priority
         />
       </span>
     );
@@ -69,7 +67,6 @@ export function BrandMark({ className, variant = "rail" }: BrandMarkProps) {
           height={120}
           sizes="(max-width: 1280px) 5rem, 14rem"
           className="block h-auto w-full object-contain object-center dark:hidden"
-          priority
         />
         <Image
           src={DARK}
@@ -78,7 +75,6 @@ export function BrandMark({ className, variant = "rail" }: BrandMarkProps) {
           height={120}
           sizes="(max-width: 1280px) 5rem, 14rem"
           className="hidden h-auto w-full object-contain object-center dark:block"
-          priority
         />
       </span>
     </span>
