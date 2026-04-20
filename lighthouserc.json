@@ -2,13 +2,13 @@
   "ci": {
     "collect": {
       "numberOfRuns": 1,
-      "startServerCommand": "npm run start",
+      "startServerCommand": "npm run start -- -p 4173",
       "startServerReadyPattern": "Ready in",
       "url": [
-        "http://localhost:3000/",
-        "http://localhost:3000/blog",
-        "http://localhost:3000/about",
-        "http://localhost:3000/blog/seo-systems-for-editorial-sites"
+        "http://localhost:4173/",
+        "http://localhost:4173/blog",
+        "http://localhost:4173/about",
+        "http://localhost:4173/blog/seo-systems-for-editorial-sites"
       ]
     },
     "assert": {
