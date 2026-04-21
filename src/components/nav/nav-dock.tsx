@@ -97,7 +97,7 @@ function NavRailContent() {
       </div>
       <Separator className="mt-auto hidden xl:block" />
       <div className="mt-auto flex flex-col items-center gap-1">
-        <div className="flex flex-row items-center gap-1">
+        <div className="flex flex-col items-center gap-1 xl:flex-row xl:items-center">
           <ThemeToggle />
           <ReadModeToggle />
         </div>

@@ -22,6 +22,7 @@ export function BrandImage({
   context,
   priority,
   preload,
+  loading,
   ...props
 }: BrandImageProps) {
   const normalizedAlt = typeof alt === "string" ? alt.trim() : "";
@@ -36,6 +37,7 @@ export function BrandImage({
       {...props}
       preload={preload}
       priority={effectivePriority}
+      loading={loading ?? (preload ? "eager" : undefined)}
       alt={finalAlt}
       aria-hidden={isDecorative || props["aria-hidden"]}
     />
