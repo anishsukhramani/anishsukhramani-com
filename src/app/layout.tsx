@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { Shell } from "@/components/nav/shell";
@@ -67,10 +68,12 @@ export default function RootLayout({
       lang="en-US"
       suppressHydrationWarning
       className={`${inter.variable} ${robotoMono.variable} h-full antialiased`}
-      style={{
-        "--font-system":
-          '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial',
-      }}
+      style={
+        {
+          "--font-system":
+            '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial',
+        } as CSSProperties
+      }
     >
       <body
         className="min-h-full bg-background font-sans text-base text-foreground"
