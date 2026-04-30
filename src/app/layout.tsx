@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces, Geist_Mono } from "next/font/google";
+import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { Shell } from "@/components/nav/shell";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -12,23 +12,16 @@ import {
   SEO_TITLE_TEMPLATE,
 } from "@/lib/seo/seo";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
   display: "swap",
   adjustFontFallback: true,
 });
 
-const fraunces = Fraunces({
+const robotoMono = Roboto_Mono({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  adjustFontFallback: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-roboto-mono",
   display: "swap",
   adjustFontFallback: true,
 });
@@ -73,10 +66,14 @@ export default function RootLayout({
     <html
       lang="en-US"
       suppressHydrationWarning
-      className={`${dmSans.variable} ${fraunces.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${robotoMono.variable} h-full antialiased`}
+      style={{
+        "--font-system":
+          '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial',
+      }}
     >
       <body
-        className="min-h-full bg-background font-sans text-foreground"
+        className="min-h-full bg-background font-sans text-base text-foreground"
         suppressHydrationWarning
       >
         <ThemeProvider

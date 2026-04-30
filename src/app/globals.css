@@ -8,9 +8,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-dm-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-fraunces);
+  --font-sans: var(--font-system), system-ui, -apple-system, BlinkMacSystemFont,
+    var(--font-inter), sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco,
+    var(--font-roboto-mono), monospace;
+  --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -47,13 +49,81 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  /* Fluid type (clamp): use `text-hero`, `text-page`, `text-section`, `text-subsection`, `text-lead`, `text-prose` */
-  --text-hero: clamp(2rem, 1.35rem + 2.2vw, 3.5rem);
-  --text-page: clamp(1.875rem, 1.35rem + 1.35vw, 2.5rem);
-  --text-section: clamp(1.25rem, 1.05rem + 0.7vw, 1.75rem);
-  --text-subsection: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
-  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
-  --text-prose: clamp(1.015625rem, 0.94rem + 0.22vw, 1.0625rem);
+  /* Mathematical SF-based typography scale (WCAG-aligned). */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-xs--letter-spacing: 0em;
+
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+  --text-sm--letter-spacing: -0.011em;
+
+  --text-base: 1rem;
+  --text-base--line-height: 1.625rem;
+  --text-base--letter-spacing: -0.02em;
+
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-lg--letter-spacing: -0.024em;
+
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-xl--letter-spacing: 0.01em;
+  --text-xl--font-weight: 500;
+
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-2xl--letter-spacing: 0.006em;
+  --text-2xl--font-weight: 600;
+
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-3xl--letter-spacing: 0em;
+  --text-3xl--font-weight: 600;
+
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.5rem;
+  --text-4xl--letter-spacing: -0.007em;
+  --text-4xl--font-weight: 700;
+
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 3rem;
+  --text-5xl--letter-spacing: -0.013em;
+  --text-5xl--font-weight: 700;
+
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 3.75rem;
+  --text-6xl--letter-spacing: -0.021em;
+  --text-6xl--font-weight: 800;
+
+  /* Preserve existing semantic text tokens used across the app. */
+  --text-hero: var(--text-6xl);
+  --text-hero--line-height: var(--text-6xl--line-height);
+  --text-hero--letter-spacing: var(--text-6xl--letter-spacing);
+  --text-hero--font-weight: var(--text-6xl--font-weight);
+
+  --text-page: var(--text-4xl);
+  --text-page--line-height: var(--text-4xl--line-height);
+  --text-page--letter-spacing: var(--text-4xl--letter-spacing);
+  --text-page--font-weight: var(--text-4xl--font-weight);
+
+  --text-section: var(--text-2xl);
+  --text-section--line-height: var(--text-2xl--line-height);
+  --text-section--letter-spacing: var(--text-2xl--letter-spacing);
+  --text-section--font-weight: var(--text-2xl--font-weight);
+
+  --text-subsection: var(--text-xl);
+  --text-subsection--line-height: var(--text-xl--line-height);
+  --text-subsection--letter-spacing: var(--text-xl--letter-spacing);
+  --text-subsection--font-weight: var(--text-xl--font-weight);
+
+  --text-lead: var(--text-lg);
+  --text-lead--line-height: var(--text-lg--line-height);
+  --text-lead--letter-spacing: var(--text-lg--letter-spacing);
+
+  --text-prose: var(--text-base);
+  --text-prose--line-height: var(--text-base--line-height);
+  --text-prose--letter-spacing: var(--text-base--letter-spacing);
 }
 
 :root {
@@ -134,11 +204,14 @@
   html {
     /* Clip horizontal bleed without pairing `hidden` on html+body (Chromium can break trackpad scroll). */
     @apply overflow-x-clip font-sans;
+    font-optical-sizing: auto;
     /* Stop rubber-band overscroll at scroll bounds (blank gap behind the page). */
     overscroll-behavior: none;
   }
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     overscroll-behavior: none;
   }
 
