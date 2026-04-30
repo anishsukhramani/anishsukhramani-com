@@ -1,100 +1,139 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { GitBranch, Globe, Mail, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import type { LucideIcon } from "lucide-react";
+import {
+  Camera,
+  BookOpen,
+  GitBranch,
+  Globe,
+  Link2,
+  MessageCircle,
+  Users,
+} from "lucide-react";
+import { ConnectCard } from "@/components/connect/connect-card";
+import { ConnectEmailCard } from "@/components/connect/connect-email-card";
+import { getContactEmail } from "@/lib/env";
 import { absolutePublicUrl } from "@/lib/seo/public-url";
 
 const canonical = absolutePublicUrl("/connect");
 
 export const metadata: Metadata = {
   title: "Connect",
-  description: "Social profiles and a direct line for thoughtful messages.",
+  description:
+    "Operating asynchronously in PST. Collaborations, remote opportunities, and technical discussions—reach out by email or via profiles.",
   alternates: { canonical },
   openGraph: { url: canonical },
 };
 
-const socials = [
-  { label: "GitHub", href: "https://github.com", icon: GitBranch },
-  { label: "X / Twitter", href: "https://twitter.com", icon: MessageCircle },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: Globe },
-];
+type SocialTile = {
+  title: string;
+  description: string;
+  href: string | undefined;
+  icon: LucideIcon;
+  id: string;
+  inactiveHint?: string;
+};
 
 export default function ConnectPage() {
+  const contactEmail = getContactEmail();
+
+  const socialTiles: SocialTile[] = [
+    {
+      id: "github",
+      title: "GitHub",
+      description: "Open source & codebases",
+      href: "https://github.com/AnishSukhramani",
+      icon: GitBranch,
+    },
+    {
+      id: "linkedin",
+      title: "LinkedIn",
+      description: "Professional network",
+      href: "https://www.linkedin.com/in/anishsukhramani/",
+      icon: Globe,
+    },
+    {
+      id: "x",
+      title: "X",
+      description: "Thoughts & high-velocity shipping",
+      href: "https://x.com/AnishSukhramani",
+      icon: MessageCircle,
+    },
+    {
+      id: "discord",
+      title: "Discord",
+      description: "",
+      href: undefined,
+      icon: Link2,
+      inactiveHint: "Discord ID: anishsukhramani",
+    },
+    {
+      id: "facebook",
+      title: "Facebook",
+      description: "Social profile",
+      href: "https://www.facebook.com/profile.php?id=100092664517990",
+      icon: Users,
+    },
+    {
+      id: "instagram",
+      title: "Instagram",
+      description: "Life and snapshots",
+      href: "https://www.instagram.com/anishsukhramani/",
+      icon: Camera,
+    },
+  ];
+
+  const showDevEmailHint =
+    process.env.NODE_ENV === "development" && !contactEmail;
+
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16 sm:px-8">
-      <header className="max-w-2xl">
-        <h1 className="font-heading text-page font-semibold tracking-tight">
-          Connect
+    <div className="mx-auto flex h-[calc(100dvh-(3.5rem+env(safe-area-inset-top,0px)))] max-w-4xl flex-col justify-start overflow-y-auto px-4 py-4 sm:px-8 sm:py-6 md:justify-center lg:h-[calc(100dvh-env(safe-area-inset-top,0px))] lg:py-8">
+      <header className="mx-auto w-full max-w-3xl text-center">
+        <h1 className="font-heading text-page font-semibold tracking-tight text-muted-foreground md:text-5xl md:leading-tight">
+          Connect.
         </h1>
-        <p className="mt-4 text-lead text-muted-foreground">
-          Say hello, propose a collaboration, or share something worth reading.
+        <p className="mx-auto mt-2 max-w-2xl text-prose text-muted-foreground sm:text-lead">
+          For collaborations, remote opportunities, or technical discussions.
+          My inbox is always open.
         </p>
       </header>
 
-      <section className="mt-12 grid gap-10 lg:grid-cols-2">
-        <div>
-          <h2 className="font-heading text-section font-semibold">Profiles</h2>
-          <ul className="mt-6 space-y-3">
-            {socials.map(({ label, href, icon: Icon }) => (
-              <li key={label}>
-                <Link
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${label} (opens in a new tab)`}
-                  className="focus-ring inline-flex items-center gap-3 rounded-xl border border-border/80 bg-card px-4 py-3 text-sm font-medium transition-colors hover:bg-muted"
-                >
-                  <Icon className="size-4" aria-hidden />
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-sm text-muted-foreground">
-            Update these URLs in the source to match your real profiles.
+      <div className="mt-4 flex w-full flex-col gap-4">
+        {contactEmail ? (
+          <ConnectEmailCard email={contactEmail} />
+        ) : showDevEmailHint ? (
+          <p className="text-sm text-muted-foreground">
+            Set{" "}
+            <span className="rounded-md bg-muted px-1.5 py-0.5 font-mono text-xs">
+              NEXT_PUBLIC_CONTACT_EMAIL
+            </span>{" "}
+            to show the email card.
           </p>
-        </div>
+        ) : null}
 
-        <div className="rounded-2xl border border-border/80 bg-card p-6 shadow-sm">
-          <h2 className="font-heading text-subsection font-semibold">Send a note</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            This form is a visual shell. Wire it to Resend or your API when you
-            are ready; until then, email works instantly.
-          </p>
-          <form className="mt-6 space-y-4" action="#" method="post">
-            <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" name="name" autoComplete="name" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
+        <section aria-label="Profiles and writing" className="min-h-0">
+          <h2 className="sr-only">Profiles and writing</h2>
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+            {socialTiles.map(({ id, title, description, href, icon, inactiveHint }) => (
+              <ConnectCard
+                key={id}
+                href={href}
+                title={title}
+                description={description}
+                icon={icon}
+                external
+                inactiveHint={inactiveHint}
               />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
-              <Textarea id="message" name="message" rows={5} />
-            </div>
-            <Button type="button" variant="secondary" className="w-full" disabled>
-              Send (configure API)
-            </Button>
-          </form>
-          <a
-            href="mailto:hello@example.com"
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-medium transition-colors hover:bg-muted"
-          >
-            <Mail className="size-4" aria-hidden />
-            hello@example.com
-          </a>
-        </div>
-      </section>
+            ))}
+            <ConnectCard
+              href="/blog"
+              title="Blog"
+              description="Technical deep dives"
+              icon={BookOpen}
+              external={false}
+            />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

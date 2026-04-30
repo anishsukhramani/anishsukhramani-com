@@ -27,3 +27,14 @@ export function getSameAsProfiles(): string[] {
     process.env.NEXT_PUBLIC_SAME_AS_X,
   ].filter((value): value is string => Boolean(value));
 }
+
+/**
+ * Public contact email for the Connect page copy button. Set
+ * `NEXT_PUBLIC_CONTACT_EMAIL` in Vercel (Production + Preview) to enable the
+ * email card; when unset, the card is omitted (and in development a one-line
+ * hint may appear on `/connect`).
+ */
+export function getContactEmail(): string | undefined {
+  const raw = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim();
+  return raw || undefined;
+}
