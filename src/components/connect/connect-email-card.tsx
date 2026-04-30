@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 
 const surface =
-  "relative isolate overflow-hidden rounded-2xl border border-border/45 bg-gradient-to-br from-background/75 via-card/55 to-background/45 p-4 shadow-[inset_0_1px_0_rgb(255,255,255,0.22),0_8px_30px_rgb(0,0,0,0.06)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-1/2 before:bg-gradient-to-b before:from-white/25 before:to-transparent after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:ring-1 after:ring-white/15 dark:border-border/65 dark:from-card/65 dark:via-card/45 dark:to-card/35 dark:shadow-[inset_0_1px_0_rgb(255,255,255,0.08),0_8px_30px_rgb(0,0,0,0.3)] dark:before:from-white/10 dark:after:ring-white/8 sm:p-5";
+  "relative isolate overflow-hidden rounded-2xl border border-white/45 bg-white/10 p-4 shadow-[inset_0_1px_0_rgb(255,255,255,0.78),0_10px_30px_rgb(0,0,0,0.05)] backdrop-blur-2xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-1/2 before:bg-gradient-to-b before:from-white/38 before:to-transparent after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:ring-1 after:ring-white/60 dark:border-white/20 dark:bg-white/4 dark:shadow-[inset_0_1px_0_rgb(255,255,255,0.18),0_10px_30px_rgb(0,0,0,0.35)] dark:before:from-white/12 dark:after:ring-white/15 sm:p-5";
 
 const COPY_MS = 2000;
 
@@ -61,7 +61,7 @@ export function ConnectEmailCard({ email }: { email: string }) {
           type="button"
           onClick={() => void copyEmail()}
           className={cn(
-            "focus-ring inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-border/80 bg-background px-5 text-sm font-medium transition-[transform,opacity,background-color,color] duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:bg-muted active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100 dark:bg-background/80"
+            "focus-ring inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-white/55 bg-white/12 px-5 text-sm font-medium shadow-[inset_0_1px_0_rgb(255,255,255,0.88)] transition-[transform,opacity,background-color,color,border-color] duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:bg-white/2 hover:border-white/72 active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100 dark:border-white/24 dark:bg-white/8 dark:shadow-[inset_0_1px_0_rgb(255,255,255,0.24)] dark:hover:bg-white/12 dark:hover:border-white/30"
           )}
           aria-label={copied ? "Email copied" : "Copy email address"}
         >

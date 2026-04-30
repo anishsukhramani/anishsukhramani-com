@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import type { LucideIcon } from "lucide-react";
 import {
   Camera,
-  BookOpen,
   GitBranch,
   Globe,
   Link2,
@@ -11,6 +10,7 @@ import {
 } from "lucide-react";
 import { ConnectCard } from "@/components/connect/connect-card";
 import { ConnectEmailCard } from "@/components/connect/connect-email-card";
+import { ConnectGlobeBackground } from "@/components/connect/connect-globe-background";
 import { getContactEmail } from "@/lib/env";
 import { absolutePublicUrl } from "@/lib/seo/public-url";
 
@@ -86,18 +86,19 @@ export default function ConnectPage() {
     process.env.NODE_ENV === "development" && !contactEmail;
 
   return (
-    <div className="mx-auto flex h-[calc(100dvh-(3.5rem+env(safe-area-inset-top,0px)))] max-w-4xl flex-col justify-start overflow-y-auto px-4 py-4 sm:px-8 sm:py-6 md:justify-center lg:h-[calc(100dvh-env(safe-area-inset-top,0px))] lg:py-8">
-      <header className="mx-auto w-full max-w-3xl text-center">
+    <div className="scrollbar-hide relative isolate mx-auto flex h-[calc(100dvh-(3.5rem+env(safe-area-inset-top,0px)))] max-w-4xl flex-col justify-start overflow-y-auto px-4 py-4 sm:px-8 sm:py-6 md:justify-center lg:h-[calc(100dvh-env(safe-area-inset-top,0px))] lg:py-8">
+      <ConnectGlobeBackground />
+      <header className="z-10 w-full text-left">
         <h1 className="font-heading text-page font-semibold tracking-tight text-muted-foreground md:text-5xl md:leading-tight">
           Connect.
         </h1>
-        <p className="mx-auto mt-2 max-w-2xl text-prose text-muted-foreground sm:text-lead">
+        <p className="mt-2 max-w-2xl text-prose text-muted-foreground sm:text-lead">
           For collaborations, remote opportunities, or technical discussions.
           My inbox is always open.
         </p>
       </header>
 
-      <div className="mt-4 flex w-full flex-col gap-4">
+      <div className="relative z-10 mt-4 flex w-full flex-col gap-4">
         {contactEmail ? (
           <ConnectEmailCard email={contactEmail} />
         ) : showDevEmailHint ? (
@@ -124,13 +125,6 @@ export default function ConnectPage() {
                 inactiveHint={inactiveHint}
               />
             ))}
-            <ConnectCard
-              href="/blog"
-              title="Blog"
-              description="Technical deep dives"
-              icon={BookOpen}
-              external={false}
-            />
           </div>
         </section>
       </div>
