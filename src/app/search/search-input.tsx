@@ -36,7 +36,7 @@ export function SearchInput() {
       value={q}
       onChange={(e) => setQ(e.target.value)}
       onSubmit={onSubmit}
-      className="mt-6 max-w-2xl"
+      className="mt-6 mx-auto w-full max-w-2xl"
       buttonLabel="Find"
     />
   );

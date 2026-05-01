@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { triggerHaptic } from "@/lib/haptics";
 
 const surface =
-  "relative isolate overflow-hidden rounded-2xl border border-white/45 bg-white/10 p-4 shadow-[inset_0_1px_0_rgb(255,255,255,0.78),0_10px_30px_rgb(0,0,0,0.05)] backdrop-blur-2xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-1/2 before:bg-gradient-to-b before:from-white/38 before:to-transparent after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:ring-1 after:ring-white/60 dark:border-white/20 dark:bg-white/4 dark:shadow-[inset_0_1px_0_rgb(255,255,255,0.18),0_10px_30px_rgb(0,0,0,0.35)] dark:before:from-white/12 dark:after:ring-white/15 sm:p-5";
+  "relative isolate overflow-hidden rounded-2xl border border-white/45 bg-white/10 p-4 shadow-[inset_0_1px_0_rgb(255,255,255,0.78),0_10px_30px_rgb(0,0,0,0.05)] backdrop-blur-2xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-1/2 before:bg-gradient-to-b before:from-white/38 before:to-transparent after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:ring-1 after:ring-white/60 dark:border-neutral-800 dark:bg-black dark:shadow-none dark:backdrop-blur-none dark:before:hidden dark:after:hidden sm:p-5";
 
 const COPY_MS = 2000;
 
@@ -61,7 +61,7 @@ export function ConnectEmailCard({ email }: { email: string }) {
           type="button"
           onClick={() => void copyEmail()}
           className={cn(
-            "focus-ring inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-white/55 bg-white/12 px-5 text-sm font-medium shadow-[inset_0_1px_0_rgb(255,255,255,0.88)] transition-[transform,opacity,background-color,color,border-color] duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:bg-white/2 hover:border-white/72 active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100 dark:border-white/24 dark:bg-white/8 dark:shadow-[inset_0_1px_0_rgb(255,255,255,0.24)] dark:hover:bg-white/12 dark:hover:border-white/30"
+            "focus-ring inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-white/55 bg-white/12 px-5 text-sm font-medium shadow-[inset_0_1px_0_rgb(255,255,255,0.88)] transition-[transform,opacity,background-color,color,border-color] duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:bg-white/2 hover:border-white/72 active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100 dark:border-neutral-800 dark:bg-black dark:shadow-none dark:hover:bg-neutral-950 dark:hover:border-neutral-700"
           )}
           aria-label={copied ? "Email copied" : "Copy email address"}
         >

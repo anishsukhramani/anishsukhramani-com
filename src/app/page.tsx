@@ -53,12 +53,12 @@ export default async function HomePage() {
       <JsonLd data={personJsonLd} />
       <div className="flex flex-col">
         <section className="border-b border-border/60 bg-gradient-to-b from-muted/30 to-background px-4 py-16 sm:px-8 lg:grid lg:min-h-[100dvh] lg:grid-cols-[minmax(0,1fr)_auto] lg:items-stretch lg:gap-0 lg:px-0 lg:py-0">
-          <div className="mx-auto flex min-w-0 max-w-6xl flex-col justify-center space-y-8 lg:mx-0 lg:max-w-none lg:px-8 lg:py-24 xl:pl-12">
+          <div className="mx-auto flex min-w-0 max-w-6xl flex-col justify-center space-y-6 lg:mx-0 lg:max-w-none lg:px-8 lg:py-24 xl:pl-12">
             <p className="font-heading text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-              Personal journal
+              Anish Sukhramani's
             </p>
             <h1 className="font-heading text-hero font-semibold leading-[1.1] tracking-tight">
-              Calm writing for curious readers.
+              Autonomy, engineered.
             </h1>
             <p className="max-w-xl text-lead leading-relaxed text-muted-foreground">
               Technical deep dives, product notes, and occasional essays — laid

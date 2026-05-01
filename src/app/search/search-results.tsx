@@ -55,7 +55,7 @@ export function SearchResults() {
 
   if (!query.trim()) {
     return (
-      <p className="mt-8 text-muted-foreground">
+      <p className="mt-8 text-center text-muted-foreground">
         Enter a query above to search all published posts.
       </p>
     );
@@ -63,13 +63,17 @@ export function SearchResults() {
 
   const resultLabel =
     state === "ready" ? (
-      <p className="mt-6 text-sm text-muted-foreground">Results for “{query}”</p>
+      <p className="mt-6 text-center text-sm text-muted-foreground">
+        Results for “{query}”
+      </p>
     ) : null;
 
   if (state === "loading") {
     return (
       <>
-        <p className="mt-6 text-sm text-muted-foreground">Results for “{query}”</p>
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          Results for “{query}”
+        </p>
         <SearchResultsGridSkeleton />
       </>
     );
@@ -78,8 +82,10 @@ export function SearchResults() {
   if (state === "error") {
     return (
       <>
-        <p className="mt-6 text-sm text-muted-foreground">Results for “{query}”</p>
-        <p className="mt-8 text-muted-foreground">
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          Results for “{query}”
+        </p>
+        <p className="mt-8 text-center text-muted-foreground">
           Search index is unavailable. Rebuild the app to regenerate it.
         </p>
       </>
@@ -89,8 +95,12 @@ export function SearchResults() {
   if (results.length === 0) {
     return (
       <>
-        <p className="mt-6 text-sm text-muted-foreground">Results for “{query}”</p>
-        <p className="mt-8 text-muted-foreground">No articles matched.</p>
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          Results for “{query}”
+        </p>
+        <p className="mt-8 text-center text-muted-foreground">
+          No articles matched.
+        </p>
       </>
     );
   }

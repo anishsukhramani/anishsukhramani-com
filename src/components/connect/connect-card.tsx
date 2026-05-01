@@ -3,10 +3,10 @@ import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const surfaceBase =
-  "group relative isolate overflow-hidden flex min-h-[4.5rem] flex-col justify-center gap-1 rounded-2xl border border-white/45 bg-white/10 p-4 text-left shadow-[inset_0_1px_0_rgb(255,255,255,0.78),0_10px_30px_rgb(0,0,0,0.05)] backdrop-blur-2xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-1/2 before:bg-gradient-to-b before:from-white/38 before:to-transparent after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:ring-1 after:ring-white/60 dark:border-white/20 dark:bg-white/4 dark:shadow-[inset_0_1px_0_rgb(255,255,255,0.18),0_10px_30px_rgb(0,0,0,0.35)] dark:before:from-white/12 dark:after:ring-white/15 sm:min-h-[5rem] sm:p-5";
+  "group relative isolate overflow-hidden flex min-h-[4.5rem] flex-col justify-center gap-1 rounded-2xl border border-white/45 bg-white/10 p-4 text-left shadow-[inset_0_1px_0_rgb(255,255,255,0.78),0_10px_30px_rgb(0,0,0,0.05)] backdrop-blur-2xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-1/2 before:bg-gradient-to-b before:from-white/38 before:to-transparent after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:ring-1 after:ring-white/60 dark:border-neutral-800 dark:bg-black dark:shadow-none dark:backdrop-blur-none dark:before:hidden dark:after:hidden sm:min-h-[5rem] sm:p-5";
 
 const surfaceInteractive =
-  "focus-ring outline-none transition-[transform,opacity,background-color,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-white/16 hover:border-white/65 hover:shadow-[inset_0_1px_0_rgb(255,255,255,0.9),0_14px_34px_rgb(0,0,0,0.08)] dark:hover:bg-white/8 dark:hover:border-white/28 dark:hover:shadow-[inset_0_1px_0_rgb(255,255,255,0.28),0_14px_34px_rgb(0,0,0,0.45)] active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100";
+  "focus-ring outline-none transition-[transform,opacity,background-color,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:bg-white/16 hover:border-white/65 hover:shadow-[inset_0_1px_0_rgb(255,255,255,0.9),0_14px_34px_rgb(0,0,0,0.08)] dark:hover:bg-neutral-950 dark:hover:border-neutral-700 dark:hover:shadow-none active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100";
 
 const surfaceInactive =
   "cursor-default transition-none hover:translate-y-0";

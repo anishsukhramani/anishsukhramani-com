@@ -15,8 +15,8 @@ export default function SearchPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-8">
       <header>
-        <h1 className="font-heading text-page font-semibold tracking-tight">
-          Search
+        <h1 className="font-heading text-page font-semibold tracking-tight text-muted-foreground">
+          Search.
         </h1>
         <p className="mt-2 text-lead text-muted-foreground">
           Search articles by topic, title, or keyword.
