@@ -2,11 +2,8 @@ import type { ReactNode } from "react";
 import { BrandImage } from "@/components/media/brand-image";
 import { ReadingProgress } from "@/components/reading/reading-progress";
 import { RelatedPosts } from "@/components/reading/related-posts";
-import { TableOfContents } from "@/components/reading/table-of-contents";
 import { estimateReadMinutes } from "@/lib/content/markdown";
 import type { Post, PostListItem } from "@/types/post";
-
-const TOC_WORD_THRESHOLD = 800;
 
 export function PostTemplate({
   post,
@@ -17,15 +14,14 @@ export function PostTemplate({
   related: PostListItem[];
   children: ReactNode;
 }) {
-  const showToc = post.word_count >= TOC_WORD_THRESHOLD && post.headings.length > 0;
   const minutes = estimateReadMinutes(post.word_count);
 
   return (
     <>
       <ReadingProgress />
       <article className="mx-auto max-w-6xl px-4 pb-16 pt-0 sm:px-8">
-        <div className="mx-auto max-w-[65ch]">
-          <header className="border-b border-border/60 pb-10">
+        <div className="mx-auto max-w-[65ch] lg:max-w-5xl">
+          <header className="border-b border-border/60 pb-10 text-left">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               {new Date(post.published_at).toLocaleDateString(undefined, {
                 year: "numeric",
@@ -37,7 +33,7 @@ export function PostTemplate({
               {post.title}
             </h1>
             {post.excerpt && (
-              <p className="mt-6 text-lead leading-relaxed text-muted-foreground">
+              <p className="mt-6 max-w-[65ch] text-lead leading-relaxed text-muted-foreground">
                 {post.excerpt}
               </p>
             )}
@@ -59,18 +55,9 @@ export function PostTemplate({
           )}
         </div>
 
-        {showToc ? (
-          <div className="mx-auto mt-12 grid w-full max-w-6xl gap-12 lg:grid-cols-[minmax(0,65ch)_260px] lg:justify-center">
-            <div className="min-w-0">{children}</div>
-            <aside className="hidden lg:sticky lg:top-28 lg:block lg:self-start">
-              <TableOfContents headings={post.headings} />
-            </aside>
-          </div>
-        ) : (
-          <div className="mx-auto mt-12 max-w-[65ch]">{children}</div>
-        )}
+        <div className="mx-auto mt-12 max-w-[65ch] lg:max-w-5xl">{children}</div>
 
-        <div className="mx-auto max-w-[65ch]">
+        <div className="mx-auto max-w-[65ch] lg:max-w-5xl">
           <RelatedPosts posts={related} />
         </div>
       </article>

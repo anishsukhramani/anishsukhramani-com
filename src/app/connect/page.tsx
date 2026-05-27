@@ -54,7 +54,7 @@ export default function ConnectPage() {
     {
       id: "x",
       title: "X",
-      description: "Thoughts & high-velocity shipping",
+      description: "Thoughts and logs",
       href: "https://x.com/AnishSukhramani",
       icon: MessageCircle,
     },

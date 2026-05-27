@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
+import { isValidElement, type ReactNode } from "react";
 import type { MDXComponents } from "mdx/types";
+import { MermaidDiagram } from "@/components/blog/mermaid-diagram";
 import { BrandImage } from "@/components/media/brand-image";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +27,18 @@ function Summary({
       </div>
     </section>
   );
+}
+
+function nodeToText(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") {
+    return String(node);
+  }
+
+  if (Array.isArray(node)) {
+    return node.map(nodeToText).join("");
+  }
+
+  return "";
 }
 
 export function createMdxComponents(imageContext?: string): MDXComponents {
@@ -57,15 +70,31 @@ export function createMdxComponents(imageContext?: string): MDXComponents {
         {...props}
       />
     ),
-    pre: ({ className, ...props }) => (
-      <pre
-        className={cn(
-          "my-8 overflow-x-auto rounded-xl border border-border bg-muted/40 p-4 font-mono text-xs leading-relaxed",
-          className
-        )}
-        {...props}
-      />
-    ),
+    pre: ({ children, className, ...props }) => {
+      if (isValidElement(children)) {
+        const childProps = children.props as {
+          className?: string;
+          children?: ReactNode;
+        };
+
+        if (childProps.className?.includes("language-mermaid")) {
+          const chart = nodeToText(childProps.children).trim();
+          return <MermaidDiagram chart={chart} className={className} />;
+        }
+      }
+
+      return (
+        <pre
+          className={cn(
+            "my-8 overflow-x-auto rounded-xl border border-border bg-muted/40 p-4 font-mono text-xs leading-relaxed",
+            className
+          )}
+          {...props}
+        >
+          {children}
+        </pre>
+      );
+    },
     code: ({ className, ...props }) => (
       <code
         className={cn(
